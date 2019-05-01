@@ -1,0 +1,90 @@
+﻿@using System.Data
+@model DataSet
+@{
+    ViewData["Title"] = "GetTestDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+
+
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type</th>
+                            <th scope="col">Column heading</th>
+                            <th scope="col">Column heading</th>
+                            <th scope="col">Column heading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow row in Model.Tables[0].Rows)
+                        {
+                            <tr class="table-active">
+                                <th scope="row">@row["Ranking"]</th>
+                                <th scope="row">@row["Distance"]</th>
+                                <td>Column content</td>
+                                <td>Column content</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6"><button type="button" class="btn btn-success btn-sm btn-block" id="myBtn">ADD NEW ATHELET TO TEST</button></div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            ADD NEW ATHLETE TO TEST <span class="close">&times;</span>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="exampleSelect1">Name</label>
+
+                                <select class="form-control" id="Ranking">
+                                    @foreach (DataRow row in Model.Tables[0].Rows)
+                                    {
+                                        <option value="@row["Users_Name"]">@row["Users_Name"]</option>
+                                    }
+                                </select>
+                            </div>
+                            <label for="exampleSelect1">Distance (meter)</label>
+                            <input class="form-control" type="text" id="Distance">
+                            <br />
+                            <button type="button" class="btn btn-success" id="SubmitTestDetail">SAVE</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script src="~/js/DetailsOfTest.js"></script>

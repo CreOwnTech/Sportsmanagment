@@ -1,0 +1,66 @@
+﻿@using System.Data
+@model DataSet
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6"><button type="button" class="btn btn-success btn-sm btn-block" id="myBtn">CREATE NEW TEST</button></div>
+            <div class="col-lg-3"> <input type="button" class="btn  btn-success" value="Logout" onclick="location.href='@Url.Action("Logout", "Home")'"/></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div id="divGrid"></div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            CREATE NEW TEST <span class="close">&times;</span>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="exampleSelect1">Type</label>
+                              
+                                <select class="form-control" id="exampleSelect1">
+                                    @foreach (DataRow row in Model.Tables[0].Rows)
+                                    {
+                                        <option value="@row["Test_Id"]">@row["Test_Name"]</option>
+                                    }
+                                </select>
+                            </div>
+                            <label for="exampleSelect1">Date</label>
+                            <input class="form-control" type="text" name="birthday" id="Date">
+                            <br />
+                            <button type="button" class="btn btn-success" id="SubmitTest">CREATE TEST</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script src="~/js/Test.js"></script>
