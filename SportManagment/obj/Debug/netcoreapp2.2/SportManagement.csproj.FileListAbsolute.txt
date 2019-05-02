@@ -16,7 +16,6 @@ E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\S
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\SportManagement.TagHelpers.output.cache
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\SportManagement.RazorCoreGenerate.cache
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -30,5 +29,4 @@ E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\S
 E:\Creown\SportManagment\SportManagment\SportManagment\bin\Debug\netcoreapp2.2\SportManagement.dll.config
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\SportManagement.csprojAssemblyReference.cache
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\DetailsTest\Index.g.cshtml.cs
-E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\DetailsTest\GetTestDetail.g.cshtml.cs
 E:\Creown\SportManagment\SportManagment\SportManagment\obj\Debug\netcoreapp2.2\Razor\Views\Home\Login.g.cshtml.cs

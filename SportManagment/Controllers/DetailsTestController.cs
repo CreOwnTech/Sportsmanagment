@@ -22,16 +22,12 @@ namespace SportManagement.Controllers
     {
         private readonly IConfiguration Configration;
 
-        //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ConnectionString);
         SqlConnection con = new SqlConnection();
         SqlCommand cmd = new SqlCommand();
         SqlDataAdapter da = new SqlDataAdapter();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
         string result = string.Empty;
-
-
-
 
 
         public DetailsTestController(IConfiguration config)
@@ -54,7 +50,7 @@ namespace SportManagement.Controllers
         }
 
         [HttpPost]
-        public string InsertTestDetail(string Ranking, int Distance,int NewTest_Id)
+        public string InsertTestDetail(string Ranking, int Distance, int NewTest_Id)
         {
 
             string connectionstring = Configration.GetConnectionString("DefaultConnectionStrings");
@@ -84,7 +80,7 @@ namespace SportManagement.Controllers
             da.Fill(ds);
             con.Close();
             return JsonConvert.SerializeObject(ds);
-         
+
         }
 
         [HttpGet]
@@ -134,7 +130,7 @@ namespace SportManagement.Controllers
         }
 
         [HttpPost]
-        public string UpdateTestDetail(string Ranking, int Distance, int NewTest_Id,int id)
+        public string UpdateTestDetail(string Ranking, int Distance, int NewTest_Id, int id)
         {
 
             string connectionstring = Configration.GetConnectionString("DefaultConnectionStrings");
@@ -151,6 +147,22 @@ namespace SportManagement.Controllers
             result = "Success";
             return JsonConvert.SerializeObject(result);
 
+        }
+
+
+        [HttpGet]
+        public string gettitle(int id)
+        {
+            string connectionstring = Configration.GetConnectionString("DefaultConnectionStrings");
+            con = new SqlConnection(connectionstring);
+            con.Open();
+            cmd = new SqlCommand("sp_Select_Title", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@NewTest_Id", id);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            con.Close();
+            return JsonConvert.SerializeObject(ds);
         }
     }
 }

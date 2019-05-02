@@ -6,83 +6,95 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10"></div>
-            <div class="col-lg-2">
-                <input type="button" class="btn  btn-success" value="Logout"  id="btnlogout"/>
+    <div class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div class="card border-secondary" >
+                        <div class="card-header"><h2><span id="headtitle"></span></h2> </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+
             </div>
-
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
-                <div id="divGrid"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10"></div>
+                <div class="col-lg-2">
+                    <input type="button" class="btn  btn-success" value="Logout" id="btnlogout" />
+                </div>
+
             </div>
-            <div class="col-lg-3"></div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-success btn-sm btn-block" id="myBtn">ADD NEW ATHELET TO TEST</button>
-                <br />
-                <br />
-                <button type="button" class="btn btn-success" id="deletetest">DELETE TEST</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div id="divGrid"></div>
+                </div>
+                <div class="col-lg-3"></div>
             </div>
-            <div class="col-lg-3"></div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-success btn-sm btn-block" id="myBtn">ADD NEW ATHELET TO TEST</button>
+                    <br />
+                    <br />
+                    <button type="button" class="btn btn-success" id="deletetest">DELETE TEST</button>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
 
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            ADD NEW ATHLETE TO TEST <span class="close">&times;</span>
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                ADD NEW ATHLETE TO TEST <span class="close">&times;</span>
 
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="form-group">
-                                <label for="exampleSelect1">Name</label>
-
-                                <select class="form-control" id="Ranking">
-                                    @foreach (DataRow row in Model.Tables[0].Rows)
-                                    {
-                                        <option value="@row["Users_Name"]">@row["Users_Name"]</option>
-                                    }
-                                </select>
                             </div>
-                            <label for="exampleSelect1">Distance (meter)</label>
-                            <input class="form-control" type="text" id="Distance">
+                            <div class="modal-body">
 
-                            <br />
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Name</label>
 
-                            <button type="button" class="btn btn-success" id="btnDeleteAthelet">DELETE ATHELET FROM TEST</button>
+                                    <select class="form-control" id="Ranking">
+                                        @foreach (DataRow row in Model.Tables[0].Rows)
+                                        {
+                                            <option value="@row["Users_Name"]">@row["Users_Name"]</option>
+                                        }
+                                    </select>
+                                </div>
+                                <label for="exampleSelect1">Distance (meter)</label>
+                                <input class="form-control" type="text" id="Distance">
+
+                                <br />
+
+                                <button type="button" class="btn btn-success" id="btnDeleteAthelet">DELETE ATHELET FROM TEST</button>
 
 
-                            <br />
-                            <br />
-                            <button type="button" class="btn btn-success" id="SubmitTestDetail">SAVE</button>
+                                <br />
+                                <br />
+                                <button type="button" class="btn btn-success" id="SubmitTestDetail">SAVE</button>
+
+                            </div>
 
                         </div>
 
                     </div>
-
                 </div>
+                <div class="col-lg-4"></div>
             </div>
-            <div class="col-lg-4"></div>
         </div>
     </div>
-</div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script src="~/js/DetailsOfTest.js"></script>

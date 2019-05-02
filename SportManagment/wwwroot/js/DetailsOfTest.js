@@ -1,9 +1,10 @@
-﻿
+﻿// ON LOAD EVENT
 window.onload = function () {
     url = window.location.href;
     if (url.split("?").length > 0) {
         query = url.split("?")[1];
         selectTestDetails(query);
+        selectTitle(query);
     }
 
 };
@@ -38,6 +39,8 @@ window.onclick = function (event) {
     }
 }
 
+
+// ADD NEW ATHLETE TO TEST
 $("#SubmitTestDetail").click(function () {
     var Ranking = $("#Ranking").val();
     var Distance = $("#Distance").val();
@@ -69,12 +72,14 @@ $("#SubmitTestDetail").click(function () {
 
 });
 
+// CLEAR DATA FROM DROP DOWN WHEN ADD NEW DATA
 function clear() {
     $("#Ranking").val("");
     $("#Distance").val("");
 
 }
 
+// SAVE ATHLETE TO TEST AFTER EDIT
 function selectTestDetails(query) {
     $.ajax({
         type: "GET",
@@ -125,6 +130,7 @@ function selectTestDetails(query) {
 
 }
 
+// SELECT ATHLETE TO TEST FOR EDIT
 function EditRowSelect(id) {
     sessionStorage["id"] = id;
     $("#btnDeleteAthelet").show();
@@ -145,6 +151,8 @@ function EditRowSelect(id) {
     });
 }
 
+
+// DELET TEST WITH ATHLETE 
 $("#deletetest").click(function () {
     swal({
         title: "Are you sure?",
@@ -178,6 +186,8 @@ $("#deletetest").click(function () {
 
 
 });
+
+// DELET ONLY ATHLETE 
 $("#btnDeleteAthelet").click(function () {
     swal({
         title: "Are you sure?",
@@ -212,6 +222,28 @@ $("#btnDeleteAthelet").click(function () {
 
 
 });
+
+// SELECT TITLE
+function selectTitle(query) {
+    $.ajax({
+        type: "GET",
+        url: "/DetailsTest/gettitle?Id=" + query,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (data) {
+            var NewTest_Date = data.Table[0].NewTest_Date;
+            var splitdate = NewTest_Date.split("T");
+            var NewTestDate = splitdate[0].replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+            var Test_Name = data.Table[0].Test_Name.toUpperCase();
+            $("#headtitle").text(Test_Name +' '+'D.'+ NewTestDate);
+           
+        }
+    });
+
+
+}
+
+// LOGOUT 
 
 $("#btnlogout").click(function () {
     sessionStorage.clear();

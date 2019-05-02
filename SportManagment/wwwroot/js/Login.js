@@ -13,14 +13,13 @@ $("#BtnLogin").click(function () {
         dataType: 'json',
         success: function (data) {
             if (data.Table.length > 0) {
-                console.log(data.Table[0].Users_RoleID);
                 sessionStorage["RoleID"] = data.Table[0].Users_RoleID;
                 window.location.href = '/Home/Index/';
             }
             else {
                 swal("Wrong credential");
             }
-            
+
         }
     });
 });

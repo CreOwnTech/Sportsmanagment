@@ -1,7 +1,9 @@
 ﻿var roleid = sessionStorage["RoleID"];
+
+// FUNCTION FOR LOAD EVEN
 window.onload = function () {
     selectNewTest();
-   
+
     if (roleid === "1") {
         $("#myBtn").show();
     } else {
@@ -36,7 +38,7 @@ window.onclick = function (event) {
     }
 }
 
-
+// ADD NEW  TEST
 
 $("#SubmitTest").click(function () {
     var Test_Name = $("#exampleSelect1").val();
@@ -48,7 +50,7 @@ $("#SubmitTest").click(function () {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (data) {
-            
+
 
             $("#myModal").hide();
             selectNewTest();
@@ -58,6 +60,7 @@ $("#SubmitTest").click(function () {
 
 });
 
+// SELECT ALL TEST
 function selectNewTest() {
     $.ajax({
         type: "GET",
@@ -76,25 +79,49 @@ function selectNewTest() {
                 '</tr></thead><tbody>';
 
             var rows = '';
+            var tblLenght = data.Table1.length;
             for (var i = 0; i < data.Table.length; i++) {
 
-                
                 var NewTest_Date = data.Table[i].NewTest_Date;
                 var splitdate = NewTest_Date.split("T");
                 var NewTestDate = splitdate[0].replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
-                if (roleid === "1") {
-                    rows = rows +
-                        '<tr>' +
-                        '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i style="cursor:pointer;">' + NewTestDate + '</i></a></td>' +
-                        '<td><a onclick="EditRowSelect(' + data.Table[i].Test_Name + ')"><i  style="cursor:pointer;">' + data.Table[i].Test_Name + '</i></a></td>' +
-                        '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i style="cursor:pointer;">' + data.Table[i].Test_Name + '</i></a></td></tr>';
-                } else {
-                    rows = rows +
-                        '<tr>' +
-                        '<td>' + NewTestDate + '</td>' +
-                        '<td>' + data.Table[i].Test_Name + '</td>' +
-                        '<td>' + data.Table[i].Test_Name + '</tr>';
+
+                var c = 0;
+                for (var a = tblLenght; a > 0; --a) {
+
+                    if (roleid === "1") {
+                        rows = rows +
+                            '<tr>' +
+                            '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i style="cursor:pointer;">' + NewTestDate + '</i></a></td>' +
+                            '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i  style="cursor:pointer;">' + data.Table1[c].count_post + '</i></a></td>' +
+                            '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i style="cursor:pointer;">' + data.Table[i].Test_Name + '</i></a></td></tr>';
+                    } else {
+                        rows = rows +
+                            '<tr>' +
+                            '<td>' + NewTestDate + '</td>' +
+                            '<td>' + data.Table1[c].count_post + '</td>' +
+                            '<td>' + data.Table[i].Test_Name + '</tr>';
+                    }
+                    c++;
+                    tblLenght--;
                 }
+
+                if (c == tblLenght) {
+                    if (roleid === "1") {
+                        rows = rows +
+                            '<tr>' +
+                            '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i style="cursor:pointer;">' + NewTestDate + '</i></a></td>' +
+                            '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i  style="cursor:pointer;">' + "0" + '</i></a></td>' +
+                            '<td><a onclick="EditRowSelect(' + data.Table[i].NewTest_Id + ')"><i style="cursor:pointer;">' + data.Table[i].Test_Name + '</i></a></td></tr>';
+                    } else {
+                        rows = rows +
+                            '<tr>' +
+                            '<td>' + NewTestDate + '</td>' +
+                            '<td>' + "0" + '</td>' +
+                            '<td>' + data.Table[i].Test_Name + '</tr>';
+                    }
+                }
+
             }
             gvCompany = header + rows + '</tbody></table>';
 
@@ -104,12 +131,14 @@ function selectNewTest() {
     });
 }
 
+// EDIT TO ADD
+
 function EditRowSelect(id) {
     window.location.href = '/DetailsTest/Index/?' + id;
 }
-
+// LOGOUT
 $("#btnlogout").click(function () {
-    
+
     sessionStorage.clear();
     window.location.href = '/Home/Logout/';
 })
