@@ -190,8 +190,8 @@ $("#deletetest").click(function () {
 // DELET ONLY ATHLETE 
 $("#btnDeleteAthelet").click(function () {
     swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this data file!",
+        title: "CONFIRM",
+        text: "Do you want to delete this athlete from the test !",
         icon: "warning",
         buttons: true,
         dangerMode: true,
